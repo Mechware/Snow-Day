@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ThrowSnowball : MonoBehaviour {
     public GameObject snowball;
+    public bool nearSnowballs = false;
+
     public float velocity = 10;
     Vector3 playerVelocity;
     public float cooldown = 1;
@@ -41,5 +43,9 @@ public class ThrowSnowball : MonoBehaviour {
     IEnumerator coolingDown() {
         yield return new WaitForSeconds(cooldown);
         onCooldown = false;
+    }
+
+    void OnTriggerEnter() {
+        
     }
 }
