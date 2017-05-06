@@ -32,6 +32,7 @@ public class ThrowSnowball : MonoBehaviour {
             clone = Instantiate(snowball, transform.position + transform.forward, transform.rotation) as GameObject;
             clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * velocity) + playerVelocity;
             onCooldown = true;
+            EventManager.Instance.FireSnowballThrown();
             StartCoroutine(coolingDown());
 
         } else { return; }
