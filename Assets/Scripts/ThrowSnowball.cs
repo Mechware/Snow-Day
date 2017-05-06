@@ -6,9 +6,9 @@ public class ThrowSnowball : MonoBehaviour {
     public GameObject snowball;
     public bool nearSnowballs = false;
 
-    public float velocity = 10;
+    public float velocity = 15;
     Vector3 playerVelocity;
-    public float cooldown = 1;
+    public float cooldown = 1, normalCooldown = 1, pileCooldown = 0.25f;
     bool onCooldown = false;
 
     // Use this for initialization
@@ -34,7 +34,7 @@ public class ThrowSnowball : MonoBehaviour {
             clone = Instantiate(snowball, transform.position + transform.forward, transform.rotation) as GameObject;
             clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * velocity) + playerVelocity;
             onCooldown = true;
-            EventManager.Instance.FireSnowballThrown();
+            //EventManager.Instance.FireSnowballThrown();
             StartCoroutine(coolingDown());
 
         } else { return; }
